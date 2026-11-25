@@ -1,0 +1,1 @@
+alter table public.tenants add column apk_url text, add column apk_checksum text, add column support_phone text;
