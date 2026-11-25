@@ -329,6 +329,7 @@ export type Database = {
           last_seen_at: string | null
           lock_state: string
           model: string | null
+          setup_steps: Json
           sim_serial: string | null
           tenant_id: string
           updated_at: string
@@ -351,6 +352,7 @@ export type Database = {
           last_seen_at?: string | null
           lock_state?: string
           model?: string | null
+          setup_steps?: Json
           sim_serial?: string | null
           tenant_id?: string
           updated_at?: string
@@ -373,6 +375,7 @@ export type Database = {
           last_seen_at?: string | null
           lock_state?: string
           model?: string | null
+          setup_steps?: Json
           sim_serial?: string | null
           tenant_id?: string
           updated_at?: string

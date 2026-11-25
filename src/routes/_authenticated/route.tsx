@@ -1,7 +1,7 @@
 import { createFileRoute, Link, Outlet, redirect, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  BarChart3, CalendarClock, CreditCard, Languages, LayoutDashboard, Lock, LogOut, Menu, Settings, Smartphone, Users,
+  BarChart3, CalendarClock, CreditCard, Languages, LayoutDashboard, Lock, LogOut, Menu, Settings, Smartphone, BookOpen, Users,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -26,6 +26,7 @@ const NAV = [
   { to: "/payments", key: "payments", icon: CreditCard },
   { to: "/devices", key: "devices", icon: Smartphone },
   { to: "/reports", key: "reports", icon: BarChart3 },
+  { to: "/enroll-guide", key: "enrollGuide", icon: BookOpen },
   { to: "/settings", key: "settings", icon: Settings },
 ] as const;
 

@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDevicesRouteImport } from './routes/_authenticated/devices'
+import { Route as AuthenticatedEnrollGuideRouteImport } from './routes/_authenticated/enroll-guide'
 import { Route as AuthenticatedInstallmentsRouteImport } from './routes/_authenticated/installments'
 import { Route as AuthenticatedPaymentsRouteImport } from './routes/_authenticated/payments'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
@@ -46,6 +47,12 @@ const AuthenticatedDevicesRoute = AuthenticatedDevicesRouteImport.update({
   path: '/devices',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedEnrollGuideRoute =
+  AuthenticatedEnrollGuideRouteImport.update({
+    id: '/enroll-guide',
+    path: '/enroll-guide',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedInstallmentsRoute =
   AuthenticatedInstallmentsRouteImport.update({
     id: '/installments',
@@ -91,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/devices': typeof AuthenticatedDevicesRoute
+  '/enroll-guide': typeof AuthenticatedEnrollGuideRoute
   '/installments': typeof AuthenticatedInstallmentsRoute
   '/payments': typeof AuthenticatedPaymentsRoute
   '/reports': typeof AuthenticatedReportsRoute
@@ -104,6 +112,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/devices': typeof AuthenticatedDevicesRoute
+  '/enroll-guide': typeof AuthenticatedEnrollGuideRoute
   '/installments': typeof AuthenticatedInstallmentsRoute
   '/payments': typeof AuthenticatedPaymentsRoute
   '/reports': typeof AuthenticatedReportsRoute
@@ -119,6 +128,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/devices': typeof AuthenticatedDevicesRoute
+  '/_authenticated/enroll-guide': typeof AuthenticatedEnrollGuideRoute
   '/_authenticated/installments': typeof AuthenticatedInstallmentsRoute
   '/_authenticated/payments': typeof AuthenticatedPaymentsRoute
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/devices'
+    | '/enroll-guide'
     | '/installments'
     | '/payments'
     | '/reports'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/devices'
+    | '/enroll-guide'
     | '/installments'
     | '/payments'
     | '/reports'
@@ -161,6 +173,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/dashboard'
     | '/_authenticated/devices'
+    | '/_authenticated/enroll-guide'
     | '/_authenticated/installments'
     | '/_authenticated/payments'
     | '/_authenticated/reports'
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       path: '/devices'
       fullPath: '/devices'
       preLoaderRoute: typeof AuthenticatedDevicesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/enroll-guide': {
+      id: '/_authenticated/enroll-guide'
+      path: '/enroll-guide'
+      fullPath: '/enroll-guide'
+      preLoaderRoute: typeof AuthenticatedEnrollGuideRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/installments': {
@@ -268,6 +288,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDevicesRoute: typeof AuthenticatedDevicesRoute
+  AuthenticatedEnrollGuideRoute: typeof AuthenticatedEnrollGuideRoute
   AuthenticatedInstallmentsRoute: typeof AuthenticatedInstallmentsRoute
   AuthenticatedPaymentsRoute: typeof AuthenticatedPaymentsRoute
   AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
@@ -280,6 +301,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDevicesRoute: AuthenticatedDevicesRoute,
+  AuthenticatedEnrollGuideRoute: AuthenticatedEnrollGuideRoute,
   AuthenticatedInstallmentsRoute: AuthenticatedInstallmentsRoute,
   AuthenticatedPaymentsRoute: AuthenticatedPaymentsRoute,
   AuthenticatedReportsRoute: AuthenticatedReportsRoute,

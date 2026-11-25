@@ -15,6 +15,13 @@
       "when": 1794758470138,
       "tag": "0001_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795618997240,
+      "tag": "0002_device_setup_checklist",
+      "breakpoints": true
     }
   ]
 }

@@ -9,6 +9,7 @@ const dict: Record<string, { en: string; ur: string }> = {
   payments: { en: "Payments", ur: "ادائیگیاں" },
   devices: { en: "Devices", ur: "موبائل" },
   reports: { en: "Reports", ur: "رپورٹس" },
+  enrollGuide: { en: "Enroll a phone", ur: "موبائل کا اندراج" },
   settings: { en: "Settings", ur: "سیٹنگز" },
   signOut: { en: "Sign out", ur: "لاگ آؤٹ" },
   dueToday: { en: "Due today", ur: "آج کی اقساط" },

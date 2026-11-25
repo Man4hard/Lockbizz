@@ -1,0 +1,1 @@
+ALTER TABLE public.devices ADD COLUMN setup_steps jsonb NOT NULL DEFAULT '{}'::jsonb;
