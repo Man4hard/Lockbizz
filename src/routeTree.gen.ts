@@ -22,6 +22,8 @@ import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedCustomersIndexRouteImport } from './routes/_authenticated/customers.index'
 import { Route as AuthenticatedCustomersCustomerIdRouteImport } from './routes/_authenticated/customers.$customerId'
 import { Route as AuthenticatedCustomersNewRouteImport } from './routes/_authenticated/customers.new'
+import { Route as ApiPublicDeviceV1EventsRouteImport } from './routes/api/public/device/v1/events'
+import { Route as ApiPublicDeviceV1HeartbeatRouteImport } from './routes/api/public/device/v1/heartbeat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -92,6 +94,17 @@ const AuthenticatedCustomersNewRoute =
     path: '/customers/new',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const ApiPublicDeviceV1EventsRoute = ApiPublicDeviceV1EventsRouteImport.update({
+  id: '/api/public/device/v1/events',
+  path: '/api/public/device/v1/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicDeviceV1HeartbeatRoute =
+  ApiPublicDeviceV1HeartbeatRouteImport.update({
+    id: '/api/public/device/v1/heartbeat',
+    path: '/api/public/device/v1/heartbeat',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -106,6 +119,8 @@ export interface FileRoutesByFullPath {
   '/customers/$customerId': typeof AuthenticatedCustomersCustomerIdRoute
   '/customers/new': typeof AuthenticatedCustomersNewRoute
   '/customers/': typeof AuthenticatedCustomersIndexRoute
+  '/api/public/device/v1/events': typeof ApiPublicDeviceV1EventsRoute
+  '/api/public/device/v1/heartbeat': typeof ApiPublicDeviceV1HeartbeatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -120,6 +135,8 @@ export interface FileRoutesByTo {
   '/customers/$customerId': typeof AuthenticatedCustomersCustomerIdRoute
   '/customers/new': typeof AuthenticatedCustomersNewRoute
   '/customers': typeof AuthenticatedCustomersIndexRoute
+  '/api/public/device/v1/events': typeof ApiPublicDeviceV1EventsRoute
+  '/api/public/device/v1/heartbeat': typeof ApiPublicDeviceV1HeartbeatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -136,6 +153,8 @@ export interface FileRoutesById {
   '/_authenticated/customers/$customerId': typeof AuthenticatedCustomersCustomerIdRoute
   '/_authenticated/customers/new': typeof AuthenticatedCustomersNewRoute
   '/_authenticated/customers/': typeof AuthenticatedCustomersIndexRoute
+  '/api/public/device/v1/events': typeof ApiPublicDeviceV1EventsRoute
+  '/api/public/device/v1/heartbeat': typeof ApiPublicDeviceV1HeartbeatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -152,6 +171,8 @@ export interface FileRouteTypes {
     | '/customers/$customerId'
     | '/customers/new'
     | '/customers/'
+    | '/api/public/device/v1/events'
+    | '/api/public/device/v1/heartbeat'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +187,8 @@ export interface FileRouteTypes {
     | '/customers/$customerId'
     | '/customers/new'
     | '/customers'
+    | '/api/public/device/v1/events'
+    | '/api/public/device/v1/heartbeat'
   id:
     | '__root__'
     | '/'
@@ -181,12 +204,16 @@ export interface FileRouteTypes {
     | '/_authenticated/customers/$customerId'
     | '/_authenticated/customers/new'
     | '/_authenticated/customers/'
+    | '/api/public/device/v1/events'
+    | '/api/public/device/v1/heartbeat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ApiPublicDeviceV1EventsRoute: typeof ApiPublicDeviceV1EventsRoute
+  ApiPublicDeviceV1HeartbeatRoute: typeof ApiPublicDeviceV1HeartbeatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -282,6 +309,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCustomersNewRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/public/device/v1/events': {
+      id: '/api/public/device/v1/events'
+      path: '/api/public/device/v1/events'
+      fullPath: '/api/public/device/v1/events'
+      preLoaderRoute: typeof ApiPublicDeviceV1EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/device/v1/heartbeat': {
+      id: '/api/public/device/v1/heartbeat'
+      path: '/api/public/device/v1/heartbeat'
+      fullPath: '/api/public/device/v1/heartbeat'
+      preLoaderRoute: typeof ApiPublicDeviceV1HeartbeatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -318,6 +359,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ApiPublicDeviceV1EventsRoute: ApiPublicDeviceV1EventsRoute,
+  ApiPublicDeviceV1HeartbeatRoute: ApiPublicDeviceV1HeartbeatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

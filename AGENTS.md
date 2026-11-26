@@ -35,3 +35,5 @@ use the editor.
 - Device secrets live in device_secrets (no RLS policies) and are read only in server functions via the admin client. Why: secrets must never reach the browser except inside the enrollment QR.
 - src/lib/offline-code.ts must stay byte-identical to OfflineCode.kt in the Android app; src/test/offline-code.test.ts pins reference vectors. Why: codes are verified offline on the phone.
 - Installment "overdue" is derived from due_date at read time, never stored. Why: no scheduled job needed.
+
+- Phone check-ins (`/api/public/device/v1/*`) verify the HMAC signature + enroll token in `src/lib/device-auth.server.ts` before any write. Why: these routes bypass site auth, so the handler is the only guard.
